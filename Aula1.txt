@@ -1,0 +1,79 @@
+=======Introdução à BD============
+
+==> Modelagem em BD
+Dados geram renda para as empresas.
+
+Documentário: Privacidade Hackeada
+
+Dados vs Informação
+
+=> Dados: são fatos de uma forma primária, armazenados em algum meio e que permitem chegar a uma informação. Ex.: valores sem significado, como o 19.
+
+=> Informação: são fatos(dados) organizadas de forma que produzam um significado ao dado dentro de um contexto. Ex.: uma pessoa possui 19 anos.
+
+=> Metadados: dados sobre as minhas informações. Descrevem as informações que estou olhando.
+
+Banco de dados: 
+
+SQL(Structured Query Language): linguagem estruturada
+
+Sistemas de Gerenciamento de Banco de Dados: conjunto de sistemas que egerencia meu banco de dados. SGBD modifica meu banco de dados. Ex.: SQL server. 
+
+=====Dois sistemas: 
+==> banco de dados relacional: tabelas, linhas x colunas.
+==> banco de dados não relacionais: armazenamento em arquivos, áudio, fotos. 80% dados são NoSQL(Not only SQL).
+
+Funções do SGBD:
+Controle de redundância
+Controle de visões de dados
+Controle de concorrência
+Backup e restauração
+
+
+============================Modelagem de Dados==========================
+Definição: é criar de forma visual que representam a estrutura. Quem trabalha com modelagem trabalha com o cliente.
+
+Tabelas(entidades)
+Coluna(atríbuto)
+
+MER - Modelo entidade relacionamento: organiza os dados e coloca numa tabela, para entender a estrutura do banco de dados.
+
+
+Tabelas						Atributos
+Sala               	Numero		Capacidade 	Equipamento
+Reservas	      	Responsável	Data/Horário	Data/Horário	Sala	Qtd pessoas
+Equipamento	Nome		Marca		Quantidade
+Pessoa		Nome		Função		Documento
+
+Der(Diagrama entidade-relacionamento): diagramas 
+
+============Modelagem conceitual: 
+	o mais básico, entidade fraca e entidade forte. Fraca: precisa ter outra identidade para existir. Forte: não necessita de mais nada para existir. Sala e Pessoa: forte. Equipamento: fraca, depende de uma sala para existir. Evento: fraca, pois depende de pessoas, sala e equipamentos para existir. 
+	Relacionamento: losângulo com verbos de ações que funcionam tanto de um lado quanto para o outro. Elipse para identificar atríbutos. Generalização e Especificação: herança - triângulo ou setinha transparente por dentro. (T, E) T ou P, e E ou S, T= total, P = parcial, E = exclusiva, S = sobreposição(é mais de uma entidade). Pessoa física é uma especificidade de pessoa. Pessoa é uma generalização de pessoa física.
+
+============Modelagem Lógica: 
+	contém mais informação, intermediária entre programador e modelagem. 
+	Não tem mais identidade forte/fraca.
+ - Chave Primária (PK- primary key): aplicado em uma coluna, não vai se repetir em nenhum momento. 
+ - Chave Estrangeira(): Foreign Key, obrigatoriamente relacionado com uma primary key!!!!relaciona o id em todas às vezes que ele aparece, relaciona. Referencia o ID de uma outra tabela.
+
+============Modelagem Física: rico em detalhes/dados. Identificar qual atributo é primary key e qual é foreign key. Coloca o tipo de cada atríbuto.
+
+Relacionamento binário: 
+
+Relacionamento ternário: 
+
+Cardinalidade: representa a quantidade de vezes que uma entidade pode estar associada em um dado relacionamento. Ex.: (mínimo, máximo).
+
+Boas maneiras: colocar primary key em todas as tabelas.
+
+==========Tipos de dados
+Preciso indicar o tipo de cada atríbuto.
+Int - limitado para 11 dígitos.
+Float - números flutuantes
+Date/DateTime
+null
+char(n) - tamanho fixo, não redimensionável
+varchar(n) - reconfigura para menos sempre.
+Nchar - caraacteres unicode.
+Varchar(max) - utiliza a quantidade máxima de caracteres possíveis.
