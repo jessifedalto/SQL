@@ -1,0 +1,69 @@
+Muitos para muitos é exceção: criação de outra tabela no meio, tabela associativa.
+
+Entidades associativas: precisa ter uma Primary Key. Faz um FK de cada tabela. 
+
+Aula 5 - Criando o BD
+
+DDL - data definition language. Ex.: create, alter, truncate, drop e rename
+
+DML - data manipulation language. Insert, update, delete e lock
+
+DCL - data control language
+
+DBO - schema padrão do sistema
+
+--create database ets -- com espaço [setor ets] pode usar ou não ->;
+--go --primeiro executa o que está antes dele.
+--use ets
+
+--drop database ets
+
+create table Colaborador(
+	EDV int not null, --coluna
+	Nome varchar(255) not null, --coluna
+	Ativo bit --coluna
+)
+
+
+--create table Sala(
+--	IDsala int primary key not null,
+--	Nome varchar(50) not null,
+--	Capacidade int
+--	)
+
+--insert into 
+--Sala(IDsala, Nome, Capacidade) --seleciono em quais colunas eu quero inserir, pode não inserir
+--values(1, 'ETs', 21)
+
+--insert into Sala values
+--(2, 'Dom', 20),(3, 'Andre', 10)
+--se não especifico as colunas, tem que estar na ordem em que a tabela foi criada
+
+select * from Sala -- mostra a tabela selecioanda * seleciona tudo
+select Capacidade from Sala --mostra o que tem na tabela em especifico
+
+select * from Sala
+order by nome - ordem alfábetica
+
+
+select * from Sala
+order by capacidade asc -- crescente
+
+select * from Sala
+order by capacidade desc --decrescente
+
+Pega dado de uma tabela
+create table Sala(
+	IDsala int primary key not null,
+	Nome varchar(50) not null,
+	Capacidade int not null
+	IDalguma int foreign key references sala(IDsala)
+	)
+
+create table Evento(
+	IDevento int primary key not null,
+	Descrição varchar(255) not null,
+	DtHrInicio datetime not null,
+	DtHrFim DateTime not null,
+	IDsala int foreign key references Sala(IDsala)
+	)
