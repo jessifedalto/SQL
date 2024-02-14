@@ -49,3 +49,31 @@ END
 DELETE FROM Pessoa WHERE IDPessoa = '031MA0H5D14A'
 
 select * from Pessoa
+
+
+--Criando tabela que será populada pela trigger
+CREATE TABLE Log(
+Data DATETIME, 
+Operacao VARCHAR(50), 
+Observacao VARCHAR(255) --nome 
+PRIMARY KEY (Data, Operacao)) -- Os dois juntos são a Primary Key
+
+
+ALTER TRIGGER fnInsert
+ON PESSOA
+FOR INSERT
+AS
+BEGIN
+	INSERT INTO Log(Data, Operacao, Observacao) values
+	(
+	GETDATE(),
+	'Inserção',
+	'Inserindo Pessoa ' + (SELECT Nome FROM inserted)
+	)
+END
+
+INSERT INTO Pessoa values('1234555666', 'Jéssica', 'Estudante')
+
+SELECT * FROM LOG
+
+TRUNCATE TABLE LOG --apaga os dados da tabela
